@@ -99,7 +99,7 @@
 
     ' SEARCH
     Private Sub btnSearch1_Click(sender As Object, e As EventArgs) Handles btnSearch1.Click
-        If cbxValues.Items.Contains(txtStudent.Text) Then
+        If lsbValues.Items.Contains(txtStudent.Text) Then
             MsgBox("Student exist!", MsgBoxStyle.Information, "Data Found ")
         Else
             MsgBox("Student Does not exist!", MsgBoxStyle.Information, "Data Not Found ")
