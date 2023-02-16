@@ -22,12 +22,11 @@
 
     ' ADD AT INDEX AND INSERT
     Private Sub btnAddAt_Click(sender As Object, e As EventArgs) Handles btnAddAt.Click, btnInsert.Click
-        If txtDep.Text = "" Then
-            MsgBox("Please insert a department!", MsgBoxStyle.Exclamation, "Empty input")
-        ElseIf Not IsNumeric(txtIndex.Text) Then
+
+        If Not IsNumeric(txtIndex.Text) Then
             MsgBox("Please provide an valid index value!", MsgBoxStyle.Exclamation, "Invalid index")
             Return
-        ElseIf CInt(txtIndex.Text) > cbxValues.Items.Count Then
+        ElseIf CInt(txtIndex.Text) + 1 > cbxValues.Items.Count Then
             MsgBox("Index exceeds the size of box!", MsgBoxStyle.Exclamation, "Index out of range")
             Return
         End If
@@ -64,6 +63,7 @@
         cbxValues.Items.RemoveAt(CInt(txtIndex.Text))
         txtDep.Clear()
         txtDep.Focus()
+
     End Sub
     ' #################################################################################################
 
