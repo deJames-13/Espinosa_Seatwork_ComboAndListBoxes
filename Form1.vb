@@ -6,8 +6,10 @@
         txtSelectedItem.Text = cbxValues.Items(cbxValues.SelectedIndex)
     End Sub
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        If txtDep.Text = "" Then
+            MsgBox("Please insert a department!", MsgBoxStyle.Exclamation, "Empty input")
 
-        If cbxValues.Items.Contains(txtDep.Text) Then
+        ElseIf cbxValues.Items.Contains(txtDep.Text) Then
             MsgBox("Department already exist!", MsgBoxStyle.Exclamation, "Data Exists")
             Return
         End If
@@ -17,7 +19,9 @@
         txtDep.Focus()
     End Sub
     Private Sub btnAddAt_Click(sender As Object, e As EventArgs) Handles btnAddAt.Click, btnInsert.Click
-        If Not IsNumeric(txtIndex.Text) Then
+        If txtDep.Text = "" Then
+            MsgBox("Please insert a department!", MsgBoxStyle.Exclamation, "Empty input")
+        ElseIf Not IsNumeric(txtIndex.Text) Then
             MsgBox("Please provide an valid index value!", MsgBoxStyle.Exclamation, "Invalid index")
             Return
         ElseIf CInt(txtIndex.Text) > cbxValues.Items.Count Then
@@ -63,21 +67,24 @@
     ' #################################################################################################
     Private Sub btnAdd1_Click(sender As Object, e As EventArgs) Handles btnAdd1.Click
 
-        If lsbValues.Items.Contains(txtStudent.Text) Then
+        If txtDep.Text = "" Then
+            MsgBox("Please insert a department!", MsgBoxStyle.Exclamation, "Empty input")
+        ElseIf lsbValues.Items.Contains(txtStudent.Text) Then
             MsgBox("Student already exist!", MsgBoxStyle.Exclamation, "Data Exists")
             Return
         End If
 
-        cbxValues.Items.Add(txtStudent.Text)
+        lsbValues.Items.Add(txtStudent.Text)
         txtStudent.Clear()
         txtStudent.Focus()
     End Sub
-    Private Sub btnRemove1_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
+    Private Sub btnRemove1_Click(sender As Object, e As EventArgs) Handles btnRemove1.Click
 
         If Not lsbValues.Items.Contains(txtStudent.Text) Then
             MsgBox("Student does not exist!", MsgBoxStyle.Exclamation, "Data Not Found ")
             Return
         End If
+        lsbValues.Items.Remove(txtStudent.Text)
         txtStudent.Clear()
         txtStudent.Focus()
     End Sub
